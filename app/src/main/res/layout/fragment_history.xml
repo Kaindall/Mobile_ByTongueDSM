@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.HistoryFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tv_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CHATS"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_medium"
+            app:layout_constraintBottom_toTopOf="@id/bt_recents"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/bt_recents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Recentes"
+            android:textColor="@color/black"
+            android:backgroundTint="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@id/tv_chat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bt_history"/>
+
+        <Button
+            android:id="@+id/bt_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Historico"
+            android:textColor="@color/black"
+            android:backgroundTint="#63E60233"
+            app:layout_constraintTop_toBottomOf="@id/tv_chat"
+            app:layout_constraintStart_toEndOf="@id/bt_recents"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/new_chat"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/ic_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

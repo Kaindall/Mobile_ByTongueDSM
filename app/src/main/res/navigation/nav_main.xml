@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.bytongue.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/recentFragment"
+        android:name="com.example.bytongue.fragments.RecentFragment"
+        android:label="fragment_recent"
+        tools:layout="@layout/fragment_recent">
+
+        <action
+            android:id="@+id/action_recentFragment_to_historyFragment"
+            app:destination="@+id/historyFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.bytongue.fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+
+        <action
+            android:id="@+id/action_historyFragment_to_recentFragment"
+            app:destination="@+id/recentFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.bytongue.fragments.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.bytongue.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@+id/editProfileFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.bytongue.fragments.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@+id/profileFragment"/>
+    </fragment>
+
+
+</navigation>

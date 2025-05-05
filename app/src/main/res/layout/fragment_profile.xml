@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/userImage"
+            android:src="@drawable/user_default"
+            app:riv_oval="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/userImage"
+            app:layout_constraintBottom_toBottomOf="@id/userImage"
+            app:layout_constraintStart_toEndOf="@id/userImage"
+            android:layout_marginStart="10dp"
+            android:text="Michael"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="45dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ic_chat"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_edit_profile"
+                app:layout_constraintTop_toTopOf="@id/tv_subChat"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subChat"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Perfil"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="@id/ic_chat"
+                app:layout_constraintStart_toEndOf="@id/ic_chat" />
+
+            <TextView
+                android:id="@+id/tv_subChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar minhas informações"
+                android:textSize="12sp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_chat"
+                app:layout_constraintStart_toEndOf="@id/ic_chat" />
+
+            <ImageView
+                android:id="@+id/ic_forwardChat"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_chat"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subChat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/container_chat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ic_notification"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_notification"
+                app:layout_constraintTop_toTopOf="@id/tv_notification"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subNotification"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notificações"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="@id/ic_notification"
+                app:layout_constraintStart_toEndOf="@id/ic_notification" />
+
+            <TextView
+                android:id="@+id/tv_subNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minha central de notificações"
+                android:textSize="12sp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_notification"
+                app:layout_constraintStart_toEndOf="@id/ic_notification" />
+
+            <ImageView
+                android:id="@+id/ic_forwardNotification"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_notification"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subNotification" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/container_notification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ic_payment"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_payment"
+                app:layout_constraintTop_toTopOf="@id/tv_payment"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subPayment"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pagamentos"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="@id/ic_payment"
+                app:layout_constraintStart_toEndOf="@id/ic_payment" />
+
+            <TextView
+                android:id="@+id/tv_subPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meus saldos e cartões"
+                android:textSize="12sp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_payment"
+                app:layout_constraintStart_toEndOf="@id/ic_payment" />
+
+            <ImageView
+                android:id="@+id/ic_forwardPayment"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_payment"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subPayment" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/container_payment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ic_config"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_config"
+                app:layout_constraintTop_toTopOf="@id/tv_config"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subConfig"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_config"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Configurações"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="@id/ic_config"
+                app:layout_constraintStart_toEndOf="@id/ic_config" />
+
+            <TextView
+                android:id="@+id/tv_subConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minhas configurações"
+                android:textSize="12sp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_config"
+                app:layout_constraintStart_toEndOf="@id/ic_config" />
+
+            <ImageView
+                android:id="@+id/ic_forwardConfig"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_config"
+                app:layout_constraintBottom_toBottomOf="@id/tv_subConfig" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/container_config"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ic_exit"
+                android:layout_width="24dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_exit"
+                app:layout_constraintTop_toTopOf="@id/tv_exit"
+                app:layout_constraintBottom_toBottomOf="@id/tv_exit"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sair"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toTopOf="@id/ic_exit"
+                app:layout_constraintStart_toEndOf="@id/ic_exit" />
+
+
+
+            <ImageView
+                android:id="@+id/ic_forwardExit"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_exit"
+                app:layout_constraintBottom_toBottomOf="@id/tv_exit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
