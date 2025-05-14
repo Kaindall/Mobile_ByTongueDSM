@@ -28,7 +28,7 @@ class SigninActivity : AppCompatActivity() {
 
         sessionManager = SessionManager(this)
 
-        if (!sessionManager.getToken().isNullOrEmpty()) {
+        if (!sessionManager.getUserId().isNullOrEmpty()) {
             navigateToHome()
         }
 
@@ -102,7 +102,7 @@ class SigninActivity : AppCompatActivity() {
     }
 
     private fun login(){
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", this)
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
         val loginRequest = LoginRequest(email = binding.etEmail.text.toString(), password = binding.etSenha.text.toString())
@@ -118,7 +118,7 @@ class SigninActivity : AppCompatActivity() {
                                 response: Response<AuthResponse>
                             ) {
                                 if (response.isSuccessful){
-                                    sessionManager.saveToken(response.body()?.user_id.toString())
+                                    sessionManager.saveUserId(response.body()?.user_id.toString())
                                     sessionManager.saveUserName(response.body()?.name.toString())
                                     sessionManager.saveUserEmail(response.body()?.email.toString())
                                     navigateToHome()
@@ -146,6 +146,7 @@ class SigninActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Toast.makeText(this@SigninActivity, t.message, Toast.LENGTH_SHORT).show()
+                loading(false)
             }
 
         })

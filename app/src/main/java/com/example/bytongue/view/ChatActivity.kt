@@ -25,7 +25,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
     private lateinit var chatAdapter: ChatAdapter
     private val chatMessages = mutableListOf<ChatResponse>()
-    private var userId = ""// ou um ID único do usuário
+    private var chatId = ""// ou um ID único do usuário
     private val level = "1"
     private val from = "pt-BR"
     private val to = "us-US"
@@ -59,7 +59,7 @@ class ChatActivity : AppCompatActivity() {
                 binding.chatRecyclerView.smoothScrollToPosition(chatMessages.size - 1)
 
 
-                if (userId != "") {
+                if (chatId != "") {
                     sendMessageToApi(userInput)  // Envia para a API
                     binding.inputMessage.setText("") // Limpa o campo de texto
                 } else {
@@ -76,7 +76,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun createMessageToApi(userInput: String){
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/") // Substitua pela URL da sua API
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", this) // Substitua pela URL da sua API
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
         val request = CreateChatRequest(
@@ -102,7 +102,7 @@ class ChatActivity : AppCompatActivity() {
                         if (response.isSuccessful && response.body() != null) {
 
                             val botReply = response.body()!!.content
-                            userId = response.body()?.id.toString()
+                            chatId = response.body()?.id.toString()
 
                             chatMessages.add(ChatResponse(botReply, false)) // false: é do bot
                             chatAdapter.notifyItemInserted(chatMessages.size - 1)
@@ -117,7 +117,9 @@ class ChatActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<CreateChatResponse>, t: Throwable) {
-                showToast("Falhou")
+                showToast(t.message.toString())
+                loading(false)
+
             }
 
         })
@@ -126,17 +128,17 @@ class ChatActivity : AppCompatActivity() {
     private fun sendMessageToApi(userInput: String) {
         // Configura o Retrofit
         val retrofitClient =
-            NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/") // Substitua pela URL da sua API
+            NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", this) // Substitua pela URL da sua API
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
         // Cria o objeto de solicitação com a mensagem do usuário
         val request = ChatRequest(
-            userId = userId,
+            chatId = chatId,
             content = userInput
         )
 
         // Faz a chamada para a API
-        val callback = endpoint.sendMessage(userId, request)
+        val callback = endpoint.sendMessage(chatId, request)
 
         callback.enqueue(object : Callback<ChatResponse> {
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
@@ -154,7 +156,9 @@ class ChatActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
                 // Caso a chamada falhe
-                showToast("Erro ao comunicar com a API")
+                showToast(t.message.toString())
+                loading(false)
+
             }
 
         })

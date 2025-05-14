@@ -31,11 +31,11 @@ class SessionManager(context: Context) {
         return prefs.getString(USER_EMAIL, null)
     }
 
-    fun saveToken(token: String) {
+    fun saveUserId(token: String) {
         prefs.edit() { putString(TOKEN, token).apply() }
     }
 
-    fun getToken() : String? {
+    fun getUserId() : String? {
         return prefs.getString(TOKEN, null)
     }
 

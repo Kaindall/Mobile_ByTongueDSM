@@ -1,14 +1,18 @@
 package com.example.bytongue.util
 
+import android.content.Context
+import android.util.Log
+import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NetworkUtils {
     companion object {
-        fun getRetrofitInstance(path: String): Retrofit {
+        fun getRetrofitInstance(path: String, context: Context): Retrofit {
+
             val client = OkHttpClient.Builder()
-                .cookieJar(CookieHandler()) // Agora está referenciando a classe correta
+                .cookieJar(PersistentCookieHandler(context))
                 .build()
 
             return Retrofit.Builder()
