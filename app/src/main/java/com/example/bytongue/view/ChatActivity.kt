@@ -37,11 +37,6 @@ class ChatActivity : AppCompatActivity() {
         setContentView(binding.root)
         sessionManager = SessionManager(this)
 
-        chatMessages.add(ChatResponse("Hi! I want to learn English. Can you help me?", true))
-        chatMessages.add(ChatResponse("Of course! I'd love to help you. Let's start with something simple. Do you know how to introduce yourself in English?", false))
-        chatMessages.add(ChatResponse("I think so. Maybe… \"My name is Maria\"?", true))
-        chatMessages.add(ChatResponse("Perfect, Maria! That’s a great start. Now try saying where you are from.", false))
-
         init()
         listeners()
 
