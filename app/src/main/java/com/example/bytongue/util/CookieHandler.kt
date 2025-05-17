@@ -1,7 +1,6 @@
 package com.example.bytongue.util
 
 import android.content.Context
-import android.util.Log
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl

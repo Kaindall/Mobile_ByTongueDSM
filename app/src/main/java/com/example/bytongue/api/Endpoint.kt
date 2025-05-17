@@ -5,10 +5,12 @@ import com.example.bytongue.model.ChatRequest
 import com.example.bytongue.model.ChatResponse
 import com.example.bytongue.model.CreateChatRequest
 import com.example.bytongue.model.CreateChatResponse
+import com.example.bytongue.model.HistoryResponse
 import com.example.bytongue.model.LoginRequest
 import com.example.bytongue.model.SignupRequest
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -33,9 +35,9 @@ interface Endpoint {
     @DELETE("auth")
     fun logout(): Call<Void>
 
-    @POST("ias/chat/{userId}")
+    @POST("ias/chat/{chatId}")
     fun sendMessage(
-        @Path("userId") userId: String,
+        @Path("chatId") chatId: String,
         @Body request: ChatRequest
     ): Call<ChatResponse>
 
@@ -43,4 +45,9 @@ interface Endpoint {
     fun createSendMessage(
         @Body request: CreateChatRequest
     ): Call<CreateChatResponse>
+
+    @GET("users/{userId}/chats")
+    suspend fun historyUser(
+        @Path("userId") userId: String
+    ): Response<List<HistoryResponse>>
 }

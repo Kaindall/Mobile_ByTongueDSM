@@ -2,14 +2,26 @@ package com.example.bytongue.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bytongue.R
+import com.example.bytongue.adapter.HistoryAdapter
+import com.example.bytongue.api.Endpoint
 import com.example.bytongue.databinding.FragmentRecentBinding
+import com.example.bytongue.manager.SessionManager
+import com.example.bytongue.util.NetworkUtils
 import com.example.bytongue.view.ChatActivity
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +40,8 @@ class RecentFragment : Fragment() {
 
     private var _binding: FragmentRecentBinding? = null
     private val binding get() = _binding!!
+    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +63,10 @@ class RecentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        sessionManager = SessionManager(requireContext())
 
+        setupRecycler()
+        loadHistory()
         listeners()
     }
 
@@ -64,6 +81,48 @@ class RecentFragment : Fragment() {
             startActivity(intent)
         }
 
+    }
+
+    private fun loadHistory() {
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", requireContext())
+        val endpoint = retrofitClient.create(Endpoint::class.java)
+        val userId = sessionManager.getUserId().toString()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val response = endpoint.historyUser(userId)
+                if (response.isSuccessful) {
+                    val historyList = response.body() ?: emptyList()
+
+                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    dateFormat.timeZone = TimeZone.getTimeZone("UTC")
+
+                    val daysAgo = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+                    daysAgo.add(Calendar.DAY_OF_YEAR, -30)
+
+                    val historyFilter = historyList.filter { item ->
+                        try {
+                            val itemDate = dateFormat.parse(item.created_dt)
+                            itemDate != null && (itemDate.after(daysAgo.time) || itemDate == daysAgo.time)
+                        } catch (e: Exception) {
+                            false
+                        }
+                    }
+
+
+                    historyAdapter = HistoryAdapter(historyFilter)
+                    binding.chatRecyclerView.adapter = historyAdapter
+                } else {
+                    Toast.makeText(requireContext(), "Erro: ${response.code()}", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Erro: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setupRecycler() {
+        binding.chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
     companion object {

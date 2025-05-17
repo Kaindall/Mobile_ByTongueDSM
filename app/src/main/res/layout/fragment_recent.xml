@@ -46,6 +46,22 @@
             app:layout_constraintStart_toEndOf="@id/bt_recents"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            app:stackFromEnd="true"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/bt_history"
+            app:layout_constraintBottom_toTopOf="@id/new_chat"/>
+
         <ImageView
             android:id="@+id/new_chat"
             android:layout_width="65dp"
