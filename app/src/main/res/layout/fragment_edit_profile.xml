@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Editar Informações"
+                android:text="@string/editar_informa_es"
                 android:textColor="@color/primary_text"
                 android:textSize="19sp"
                 android:textStyle="bold"/>
@@ -60,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="add image"
+                android:text="@string/add_image"
                 android:textColor="@color/secondary_text"
                 android:textSize="11sp"/>
         </FrameLayout>
@@ -71,7 +71,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="26dp"
             android:background="@drawable/background_input"
-            android:hint="name"
+            android:hint="@string/nome"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="text"
@@ -86,7 +86,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="26dp"
             android:background="@drawable/background_input"
-            android:hint="email"
+            android:hint="@string/email"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_gravity="end"
-            android:text="Salvar"
+            android:text="@string/salvar"
             android:backgroundTint="@color/primary"
             app:cornerRadius="15dp"/>
 

@@ -1,6 +1,6 @@
 package com.example.bytongue.model
 
 data class ChatRequest(
-    var userId: String = "",
+    var chatId: String = "",
     var content: String = "",
 )

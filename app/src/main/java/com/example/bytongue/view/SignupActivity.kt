@@ -120,7 +120,7 @@ class SignupActivity : AppCompatActivity() {
     private fun registerUser(name : String, email : String, password : String) {
 
         val request = SignupRequest(name, email, password)
-        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/")
+        val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", this)
         val endpoint = retrofitClient.create(Endpoint::class.java)
 
         val call = endpoint.registerUser(request)

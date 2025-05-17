@@ -107,7 +107,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/background_chat_input"
-            android:hint="Digite uma mensagem"
+            android:hint="@string/digite_uma_mensagem"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="text"

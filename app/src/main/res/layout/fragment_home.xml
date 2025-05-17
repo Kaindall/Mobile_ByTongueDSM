@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="Olá, Michael!"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@id/userImage"
             app:layout_constraintStart_toEndOf="@id/userImage"
@@ -63,7 +62,7 @@
                         android:id="@+id/tv_tipsDay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tips do dia"
+                        android:text="@string/tips_do_dia"
                         android:textColor="@android:color/white"
                         android:fontFamily="@font/roboto_medium"
                         android:textSize="20sp"
@@ -135,7 +134,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Melhor pontuação"
+                        android:text="@string/melhor_pontua_o"
                         android:textSize="18sp"
                         android:fontFamily="@font/roboto_medium" />
 
@@ -170,7 +169,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Meta diária"
+                        android:text="@string/meta_di_ria"
                         android:textSize="18sp"
                         android:fontFamily="@font/roboto_medium" />
 
@@ -267,7 +266,7 @@
                             android:id="@+id/tv_curiosity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Curiosidades"
+                            android:text="@string/curiosidades"
                             android:textSize="18sp"
                             android:fontFamily="@font/roboto_medium" />
 

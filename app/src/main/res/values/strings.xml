@@ -1,11 +1,9 @@
 <resources>
-    <string name="app_name">Chat</string>
+    <string name="app_name">Bytongue</string>
     <string name="email">Email</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_uppercase">SIGN UP</string>
-    <string name="select_user">Select User</string>
-    <string name="type_a_message">Type a message</string>
     <string name="login">Login</string>
     <string name="login_uppercase">LOGIN</string>
     <string name="senha">Senha</string>
@@ -14,6 +12,26 @@
     <string name="esqueci_a_senha">Esqueci a senha</string>
     <string name="nome">Nome</string>
     <string name="confirmar_senha">Confirmar Senha</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="digite_uma_mensagem">Digite uma mensagem</string>
+    <string name="editar_informa_es">Editar Informações</string>
+    <string name="add_image">add image</string>
+    <string name="salvar">Salvar</string>
+    <string name="chats_uppercase">CHATS</string>
+    <string name="recentes">Recentes</string>
+    <string name="historico">Historico</string>
+    <string name="tips_do_dia">Tips do dia</string>
+    <string name="melhor_pontua_o">Melhor pontuação</string>
+    <string name="meta_di_ria">Meta diária</string>
+    <string name="curiosidades">Curiosidades</string>
+    <string name="perfil">Perfil</string>
+    <string name="editar_minhas_informa_es">Editar minhas informações</string>
+    <string name="notifica_es">Notificações</string>
+    <string name="minha_central_de_notifica_es">Minha central de notificações</string>
+    <string name="pagamentos">Pagamentos</string>
+    <string name="meus_saldos_e_cart_es">Meus saldos e cartões</string>
+    <string name="configura_es">Configurações</string>
+    <string name="minhas_configura_es">Minhas configurações</string>
+    <string name="sair">Sair</string>
+    <string name="chat_id">Chat ID</string>
+    <string name="data_de_cria_o">Data de criação</string>
 </resources>

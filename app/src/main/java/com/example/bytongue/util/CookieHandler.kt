@@ -1,18 +1,23 @@
 package com.example.bytongue.util
 
+import android.content.Context
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
 
-class CookieHandler : CookieJar {
-
-    private val cookieStore: MutableMap<String, List<Cookie>> = mutableMapOf()
+class PersistentCookieHandler(context: Context) : CookieJar {
+    private val prefs = context.getSharedPreferences("cookie_prefs", Context.MODE_PRIVATE)
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
-        cookieStore[url.host()] = cookies
+        val cookieString = cookies.joinToString("; ") { it.toString() }
+        prefs.edit().putString(url.host(), cookieString).apply()
     }
 
     override fun loadForRequest(url: HttpUrl): List<Cookie> {
-        return cookieStore[url.host()] ?: emptyList()
+        val cookieString = prefs.getString(url.host(), null) ?: return emptyList()
+        return cookieString.split(";").mapNotNull {
+            Cookie.parse(url, it)
+        }
     }
 }
+

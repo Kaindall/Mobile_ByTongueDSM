@@ -90,18 +90,18 @@ class ProfileFragment : Fragment() {
     private fun listeners() {
 
         binding.containerExit.setOnClickListener{
-            val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/")
+            val retrofitClient = NetworkUtils.getRetrofitInstance("https://bytongue.azurewebsites.net/", requireContext())
             val endpoint = retrofitClient.create(Endpoint::class.java)
             val callback = endpoint.logout()
 
             callback.enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
-
-                    sessionManager.clearSession()
-                    val intent = Intent(context, SigninActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().finish()
-
+                    if (response.isSuccessful){
+                        sessionManager.clearSession()
+                        val intent = Intent(context, SigninActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
+                    }
                 }
 
                 override fun onFailure(call: Call<Void>, t: Throwable) {
