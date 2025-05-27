@@ -89,7 +89,7 @@ class HistoryFragment : Fragment() {
             try {
                 val response = endpoint.historyUser(userId)
                 if (response.isSuccessful) {
-                    val historyList = response.body() ?: emptyList()
+                    val historyList = response.body()?.reversed()?: emptyList()
                     historyAdapter = HistoryAdapter(historyList)
                     binding.chatRecyclerView.adapter = historyAdapter
                 } else {
