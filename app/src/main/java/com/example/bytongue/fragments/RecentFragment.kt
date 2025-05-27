@@ -92,7 +92,7 @@ class RecentFragment : Fragment() {
             try {
                 val response = endpoint.historyUser(userId)
                 if (response.isSuccessful) {
-                    val historyList = response.body() ?: emptyList()
+                    val historyList = response.body()?.reversed() ?: emptyList()
 
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                     dateFormat.timeZone = TimeZone.getTimeZone("UTC")

@@ -15,6 +15,7 @@ import com.example.bytongue.api.Endpoint
 import com.example.bytongue.databinding.FragmentProfileBinding
 import com.example.bytongue.manager.SessionManager
 import com.example.bytongue.util.NetworkUtils
+import com.example.bytongue.util.PersistentCookieHandler
 import com.example.bytongue.view.SigninActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,8 +63,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         sessionManager = SessionManager(requireContext())
 
-
-
         loadUserDetails()
         listeners()
     }
@@ -98,6 +97,10 @@ class ProfileFragment : Fragment() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful){
                         sessionManager.clearSession()
+
+                        val cookieHandler = PersistentCookieHandler(requireContext())
+                        cookieHandler.clearCookies()
+
                         val intent = Intent(context, SigninActivity::class.java)
                         startActivity(intent)
                         requireActivity().finish()

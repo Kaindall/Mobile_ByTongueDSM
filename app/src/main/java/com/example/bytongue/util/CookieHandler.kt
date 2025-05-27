@@ -19,5 +19,9 @@ class PersistentCookieHandler(context: Context) : CookieJar {
             Cookie.parse(url, it)
         }
     }
+
+    fun clearCookies() {
+        prefs.edit().clear().apply()
+    }
 }
 
