@@ -7,6 +7,7 @@ import com.example.bytongue.model.CreateChatRequest
 import com.example.bytongue.model.CreateChatResponse
 import com.example.bytongue.model.HistoryResponse
 import com.example.bytongue.model.LoginRequest
+import com.example.bytongue.model.QuestionResponse
 import com.example.bytongue.model.SignupRequest
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -16,6 +17,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Endpoint {
 
@@ -50,4 +52,11 @@ interface Endpoint {
     suspend fun historyUser(
         @Path("userId") userId: String
     ): Response<List<HistoryResponse>>
+
+    @GET("ias/quiz")
+    fun getQuestions(
+        @Query("level") level: Int,
+        @Query("from") from: String?,
+        @Query("to") to: String?
+    ): Call<List<QuestionResponse>>
 }

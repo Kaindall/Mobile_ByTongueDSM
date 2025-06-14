@@ -12,6 +12,8 @@ class SessionManager(context: Context) {
         private const val USER_NAME = "USER_NAME"
         private const val USER_EMAIL = "USER_EMAIL"
         private const val USER_IMAGE = "USER_IMAGE"
+        private const val USER_LEVEL = "USER_LEVEL"
+        private const val USER_LANGUAGE = "USER_LANGUAGE"
         private const val TOKEN = "TOKEN"
     }
 
@@ -45,6 +47,22 @@ class SessionManager(context: Context) {
 
     fun getUserImage() : String? {
         return prefs.getString(USER_IMAGE, null)
+    }
+
+    fun saveLevel(userLevel : Int) {
+        prefs.edit() { putInt(USER_LEVEL, userLevel) }
+    }
+
+    fun getLevel() : Int {
+        return prefs.getInt(USER_LEVEL, 1)
+    }
+
+    fun saveLanguage(language: String) {
+        prefs.edit { putString(USER_LANGUAGE, language) }
+    }
+
+    fun getLanguage(): String? {
+        return prefs.getString(USER_LANGUAGE, "en-US")
     }
 
     fun clearSession() {

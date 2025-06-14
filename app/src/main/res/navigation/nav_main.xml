@@ -37,7 +37,12 @@
         android:id="@+id/quizFragment"
         android:name="com.example.bytongue.fragments.QuizFragment"
         android:label="fragment_quiz"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/fragment_quiz">
+
+        <action
+            android:id="@+id/action_homeQuizFragment_to_settingQuizFragment"
+            app:destination="@+id/settingFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"
@@ -59,6 +64,16 @@
         <action
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@+id/profileFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.bytongue.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting">
+
+        <action
+            android:id="@+id/action_settingFragment_to_quizFragment"
+            app:destination="@+id/quizFragment"/>
     </fragment>
 
 
