@@ -81,7 +81,7 @@ class SignupActivity : AppCompatActivity() {
             binding.tvConfirmMostrarSenha.text = "Mostrar"
         }
 
-        binding.etSenha2.setSelection(binding.etSenha.text.length)
+        binding.etSenha2.setSelection(binding.etSenha2.text.length)
     }
 
     private fun isValidSignUpDetails(): Boolean {

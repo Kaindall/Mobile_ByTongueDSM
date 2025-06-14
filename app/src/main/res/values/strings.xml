@@ -34,4 +34,6 @@
     <string name="sair">Sair</string>
     <string name="chat_id">Chat ID</string>
     <string name="data_de_cria_o">Data de criação</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
